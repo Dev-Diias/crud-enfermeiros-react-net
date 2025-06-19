@@ -1,0 +1,6 @@
+@APITRAB_HostAddress = http://localhost:5025
+
+GET {{APITRAB_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
