@@ -34,6 +34,5 @@ namespace APITRAB.Model
         [ForeignKey("HospitalId")] 
         public Hospital? Hospital { get; set; }
 
-        
     }
 }

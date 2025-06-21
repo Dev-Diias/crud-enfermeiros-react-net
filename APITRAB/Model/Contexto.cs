@@ -12,6 +12,7 @@ namespace APITRAB.Model
         public DbSet<Enfermeiro> Enfermeiros { get; set; }
         public DbSet<Hospital> Hospitais { get; set; } 
 
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Enfermeiro>()

@@ -25,11 +25,10 @@ namespace APITRAB.Repository
 
         public async Task<Enfermeiro> GetByIdAsync(int id)
         {
-           
             return await _context.Enfermeiros
                                  .Include(e => e.Hospital) 
                                  .FirstOrDefaultAsync(e => e.Id == id);
-            
+           
         }
 
         public async Task AddAsync(Enfermeiro enfermeiro)
@@ -55,7 +54,7 @@ namespace APITRAB.Repository
         }
        
 
-        public async Task<bool> DeleteAsync(int id)
+        public async Task<bool> DeleteAsync(int id) 
         {
             var enfermeiro = await GetByIdAsync(id);
             if (enfermeiro != null)

@@ -391,7 +391,6 @@ function EnfermeirosListPage() {
               onChange={handleChange}
               value={enfermeiroSelecionado.idade || ""}
             />
-
             <label className="mt-3">Hospital: </label>
             <select
               className="form-control"

@@ -2,6 +2,20 @@ import axios from "axios";
 
 const API_URL = "https://localhost:7139/api/Hospitais";
 
+axios.interceptors.request.use(
+  (config) => {
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (user && user.token) {
+      config.headers.Authorization = `Bearer ${user.token}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
 const hospitalService = {
   getAllHospitais: async () => {
     try {

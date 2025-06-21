@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using APITRAB.Model; 
+
 namespace APITRAB.Repository 
 {
     public interface IEnfermeiroRepository

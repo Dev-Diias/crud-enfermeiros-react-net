@@ -1,56 +1,43 @@
-// src/App.js
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  Navigate,
+} from "react-router-dom";
+
+import Navbar from "./components/Navbar";
+
 import HomePage from "./Views/HomePage";
 import EnfermeirosListPage from "./Views/Enfermeiros/EnfermeirosListPage";
 import HospitaisListPage from "./Views/Hospitais/HospitaisListPage";
-import "./App.css";
+import LoginPage from "./Views/Auth/LoginPage";
+import RegisterPage from "./Views/Auth/RegisterPage";
+import authService from "./Services/authService";
+
+import "./App.css"; // Mantenha seu CSS global se tiver
 
 function App() {
+  const isAuthenticated = !!authService.getCurrentUser();
+
   return (
     <Router>
       <div className="App">
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <div className="container-fluid">
-            <Link className="navbar-brand" to="/">
-              Sistema de Enfermagem
-            </Link>
-
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarNav"
-              aria-controls="navbarNav"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="navbar-toggler-icon"></span>
-            </button>
-
-            <div className="collapse navbar-collapse" id="navbarNav">
-              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                {" "}
-                <li className="nav-item">
-                  <Link className="nav-link" to="/hospitais">
-                    Hospitais
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/enfermeiros">
-                    Enfermeiros
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
+        <Navbar />
 
         <main>
           <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/hospitais" element={<HospitaisListPage />} />
+            <Route
+              path="/"
+              element={
+                isAuthenticated ? <HomePage /> : <Navigate to="/login" />
+              }
+            />
             <Route path="/enfermeiros" element={<EnfermeirosListPage />} />
+            <Route path="/hospitais" element={<HospitaisListPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
           </Routes>
         </main>
       </div>

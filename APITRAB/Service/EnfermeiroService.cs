@@ -26,7 +26,7 @@ namespace APITRAB.Service
 
         public async Task<Enfermeiro> CreateAsync(Enfermeiro enfermeiro)
         {
-           
+            
             await _repository.AddAsync(enfermeiro);
             return enfermeiro;
         }

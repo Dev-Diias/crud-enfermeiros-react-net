@@ -28,6 +28,7 @@ function HospitaisListPage() {
 
   const abrirFecharModalIncluir = () => {
     setModalIncluir(!modalIncluir);
+
     if (!modalIncluir) {
       setHospitalSelecionado({
         id: 0,

@@ -3,11 +3,13 @@ using APITRAB.Service;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization; 
 
 namespace APITRAB.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize] 
     public class HospitaisController : ControllerBase
     {
         private readonly IHospitalService _hospitalService;
